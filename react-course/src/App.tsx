@@ -4,20 +4,20 @@ import {BrowserRouter, Route, Switch} from "react-router-dom";
 import HomePage from "./page/HomePage/HomePage";
 import ErrorPage from "./page/ErrorPage/ErrorPage";
 import Sidebar from "./component/Sidebar/Sidebar";
+import FirstExercice from "./page/Exercices/First/FirstExercice";
+import ProfilePage from "./page/Profile/ProfilePage";
 
 function App() {
     return (
-        <div className="text-xl min-h-screen flex flex-row max-h-screen">
+        <div className="text-lg min-h-screen flex flex-row max-h-screen">
             <BrowserRouter>
                 <Sidebar/>
-                <div id="page-content" className="flex-1 overflow-auto">
+                <div id="page-content" className="flex-1 overflow-auto px-8 py-4">
                     <Switch>
-                        <Route exact path="/">
-                            <HomePage/>
-                        </Route>
-                        <Route>
-                            <ErrorPage code={404} message={"Not Found"}/>
-                        </Route>
+                        <Route exact path="/"><HomePage/></Route>
+                        <Route exact path="/profile"><ProfilePage/></Route>
+                        <Route exact path="/exercice/1"><FirstExercice/></Route>
+                        <Route><ErrorPage code={404} message={"Not Found"}/></Route>
                     </Switch>
                 </div>
             </BrowserRouter>
