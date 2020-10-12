@@ -1,20 +1,15 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import Loader from "../../../component/Loader/Loader";
-import {User} from "../../../types/APITypes";
+import {User, UserGender} from "../../../types/APITypes";
 
-const TYPES = {
-    male : 'male',
-    female : 'female'
-}
-
-const initialGenderFilterState = [TYPES.male,TYPES.female];
+const initialGenderFilterState:Array<UserGender> = ['male','female'];
 
 export default function FirstExercice(){
     const [loading, setLoading] = useState<boolean>(true);
     const [users, setUsers] = useState<Array<User>>([]);
     const [usersDisplayed, setUsersDisplayed] = useState<Array<User>>([]);
-    const [filterGenders, setFilterGenders] = useState<Array<string>>(initialGenderFilterState);
+    const [filterGenders, setFilterGenders] = useState<Array<UserGender>>(initialGenderFilterState);
     const [error, setError] = useState<string|null>(null);
 
     useEffect(() => {
@@ -44,7 +39,7 @@ export default function FirstExercice(){
         setFilterGenders(initialGenderFilterState);
     }
 
-    function toggleFilter(gender:string){
+    function toggleFilter(gender:UserGender){
         let newFilterGenders = filterGenders;
         if(!filterGenders.includes(gender)){
             newFilterGenders.push(gender);
@@ -75,11 +70,11 @@ export default function FirstExercice(){
                 </div>
                 <div className="flex mx-4">
                     <label className="my-auto" htmlFor="filter-male">Homme</label>
-                    <input id="filter-male" className="mx-2" type="checkbox" checked={filterGenders.includes(TYPES.male)} onChange={(e) => toggleFilter(TYPES.male)}/>
+                    <input id="filter-male" className="mx-2" type="checkbox" checked={filterGenders.includes('male')} onChange={(e) => toggleFilter('male')}/>
                 </div>
                 <div className='flex mx-4'>
                     <label className="my-auto" htmlFor="filter-female">Femme</label>
-                    <input id="filter-female" className="mx-2 p-1" type="checkbox" checked={filterGenders.includes(TYPES.female)} onChange={(e) => toggleFilter(TYPES.female)}/>
+                    <input id="filter-female" className="mx-2 p-1" type="checkbox" checked={filterGenders.includes('female')} onChange={(e) => toggleFilter('female')}/>
                 </div>
             </div>
             {loading ? (
