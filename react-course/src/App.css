@@ -3,3 +3,10 @@
 @tailwind components;
 
 @tailwind utilities;
+
+.loader{
+    @apply rounded-full w-16 h-16;
+    border: solid 4px transparent;
+    border-top-color: black;
+    border-bottom-color: black;
+}

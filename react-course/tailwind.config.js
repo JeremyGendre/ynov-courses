@@ -16,9 +16,15 @@ module.exports = {
       opacity:{
         '30':'0.3',
         '40':'0.4'
+      },
+      boxShadow: {
+        dark:'0 0 0.4em grey'
       }
     }
   },
-  variants: {},
+  variants: {
+    borderColor:['responsive', 'hover', 'focus', 'active'],
+    borderWidth:['responsive', 'hover', 'focus', 'active']
+  },
   plugins: [],
 }
