@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import Loader from "../../../component/Loader/Loader";
 import {User, UserGender} from "../../../types/APITypes";
+import SearchInput from "../../../component/Input/SearchInput";
 
 const initialGenderFilterState:Array<UserGender> = ['male','female'];
 
@@ -66,7 +67,7 @@ export default function FirstExercice(){
         <div className="flex flex-col h-full">
             <div className="flex mb-3">
                 <div className="w-1/2 flex mx-4">
-                    <input className="border my-auto w-full flex outline-none p-2 focus:border-gray-400" placeholder="Search..." type="text" onChange={(e) => filterUsers(e.currentTarget.value)} />
+                    <SearchInput callback={filterUsers}/>
                 </div>
                 <div className="flex mx-4">
                     <label className="my-auto" htmlFor="filter-male">Homme</label>
