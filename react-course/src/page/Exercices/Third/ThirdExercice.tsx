@@ -2,22 +2,6 @@ import React, {useEffect, useState} from 'react';
 import SearchInput from "../../../component/Input/SearchInput";
 import {faBackward, faForward, faRedo} from "@fortawesome/free-solid-svg-icons";
 import IconButton from "../../../component/IconButton/IconButton";
-/*
-function reducer(state:any, newState:any):any {
-    if(typeof newState === 'function'){
-        return newState(state);
-    }
-    return newState;
-}
-
-function useUndo(initialValue:any){
-    const [state, dispatch] = useReducer(reducer, initialValue);
-
-    return [
-        {past:'', present:'', future:''},
-        {set:'',unset:'',undo:'',redo:'',canUndo:true,canRedo:true},
-    ];
-}*/
 
 type Value = {
     past:Array<string>,
@@ -32,9 +16,6 @@ const initialState = {
 };
 
 export default function ThirdExercice(){
-    /*const state = useUndo('');
-    console.log(state);*/
-
     const [value,setValue] = useState<Value>(initialState.value);
     const [canUndo,setCanUndo] = useState(initialState.canUndo);
     const [canRedo,setCanRedo] = useState(initialState.canRedo);
@@ -44,11 +25,11 @@ export default function ThirdExercice(){
         setCanRedo(value.future.length > 0);
     },[value])
 
-    function handleSearch(newValue:string){
+    const handleSearch = (newValue:string) => {
         setValue({past:[...value.past, newValue],present:newValue,future:[]});
     }
 
-    function handleBackward(){
+    const handleBackward = () => {
         let newPresentValue = value.present;
         let newPastValue:Array<string> = value.past;
         let oldValue = value.present;
@@ -64,7 +45,7 @@ export default function ThirdExercice(){
         });
     }
 
-    function handleForward(){
+    const handleForward = () => {
         let newFutureValue:Array<string> = value.future;
         let oldValue = value.present;
         if(value.future.length !== 0 ){
@@ -78,13 +59,13 @@ export default function ThirdExercice(){
         });
     }
 
-    function handleReset(){
+    const handleReset = () => {
         setValue(initialState.value);
         setCanUndo(initialState.canUndo);
         setCanRedo(initialState.canRedo);
     }
 
-    function displayValue(){
+    const displayValue = () => {
         return (
             <div className="my-3">
                 <p className="my-2">past : {JSON.stringify(value.past)}</p>
