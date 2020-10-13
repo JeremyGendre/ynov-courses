@@ -13,7 +13,7 @@ export default function FirstExercice(){
     const [error, setError] = useState<string|null>(null);
 
     useEffect(() => {
-        axios.get("https://randomuser.me/api/?results=20",{
+       axios.get("https://randomuser.me/api/?results=20",{
             headers: {"Access-Control-Allow-Origin" : "*"}
         }).then(({data}) => {
             //console.log(data.results);
@@ -95,6 +95,7 @@ export default function FirstExercice(){
                             </tr>
                             </thead>
                             <tbody>
+                            {usersDisplayed.length === 0 && <tr><td/><td>Pas de données</td><td/></tr>}
                             {usersDisplayed.map((user:User, index) => {
                                 return (
                                     <tr className="border-b border-b-1 border-gray-200 text-center hover:bg-opacity-40 hover:bg-gray-300" key={index}>

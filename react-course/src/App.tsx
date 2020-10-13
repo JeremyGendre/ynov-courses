@@ -6,6 +6,7 @@ import ErrorPage from "./page/ErrorPage/ErrorPage";
 import Sidebar from "./component/Sidebar/Sidebar";
 import FirstExercice from "./page/Exercices/First/FirstExercice";
 import ProfilePage from "./page/Profile/ProfilePage";
+import Exercices from "./page/Exercices/Exercices";
 
 function App() {
     return (
@@ -16,6 +17,7 @@ function App() {
                     <Switch>
                         <Route exact path="/"><HomePage/></Route>
                         <Route exact path="/profile"><ProfilePage/></Route>
+                        <Route exact path="/exercices"><Exercices/></Route>
                         <Route exact path="/exercice/1"><FirstExercice/></Route>
                         <Route><ErrorPage code={404} message={"Not Found"}/></Route>
                     </Switch>

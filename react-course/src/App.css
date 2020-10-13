@@ -10,3 +10,13 @@
     border-top-color: black;
     border-bottom-color: black;
 }
+
+.list-exercices-item:hover > .list-exercices-item-img{
+    opacity:0.8;
+    transform: scale(1.2);
+}
+
+.list-exercices-item:hover > .list-exercices-item-text{
+    opacity:0;
+    transform: translateY(-3em);
+}

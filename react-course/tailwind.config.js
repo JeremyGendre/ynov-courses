@@ -15,10 +15,15 @@ module.exports = {
       },
       opacity:{
         '30':'0.3',
-        '40':'0.4'
+        '40':'0.4',
+        '80':'0.8',
+        '90':'0.9'
       },
       boxShadow: {
         dark:'0 0 0.4em grey'
+      },
+      backgroundSize:{
+        '110':"110%"
       }
     }
   },
