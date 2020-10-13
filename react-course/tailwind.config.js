@@ -29,7 +29,9 @@ module.exports = {
   },
   variants: {
     borderColor:['responsive', 'hover', 'focus', 'active'],
-    borderWidth:['responsive', 'hover', 'focus', 'active']
+    borderWidth:['responsive', 'hover', 'focus', 'active'],
+    scale:['responsive', 'hover', 'focus', 'active'],
+    transform:['responsive', 'hover', 'focus', 'active']
   },
   plugins: [],
 }
