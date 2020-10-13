@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 
-export default function ProfileLink(props:any){
+export default function ProfileLink(){
     return (
         <Link to="/profile" className="flex justify-center rounded transition duration-100 p-1 hover:bg-opacity-40 hover:bg-gray-200">
             <div className="max-w-2 hover:opacity-50">
