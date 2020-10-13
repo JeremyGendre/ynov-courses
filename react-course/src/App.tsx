@@ -9,6 +9,7 @@ import ProfilePage from "./page/Profile/ProfilePage";
 import Exercices from "./page/Exercices/Exercices";
 import SecondExercice from "./page/Exercices/Second/SecondExercice";
 import ThirdExercice from "./page/Exercices/Third/ThirdExercice";
+import SettingsPage from "./page/Settings/SettingsPage";
 
 function App() {
     return (
@@ -19,6 +20,7 @@ function App() {
                     <Switch>
                         <Route exact path="/"><HomePage/></Route>
                         <Route exact path="/profile"><ProfilePage/></Route>
+                        <Route exact path="/settings"><SettingsPage/></Route>
                         <Route exact path="/exercices"><Exercices/></Route>
                         <Route exact path="/exercice/1"><FirstExercice/></Route>
                         <Route exact path="/exercice/2"><SecondExercice/></Route>

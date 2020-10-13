@@ -23806,6 +23806,10 @@ video {
   transform: translateY(-3em);
 }
 
+.home-page-link:hover > .home-page-link-icon{
+  transform: translateX(0.5em);
+}
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;

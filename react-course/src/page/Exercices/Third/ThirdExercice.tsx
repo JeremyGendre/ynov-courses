@@ -30,17 +30,14 @@ export default function ThirdExercice(){
     }
 
     const handleBackward = () => {
-        let newPresentValue = value.present;
         let newPastValue:Array<string> = value.past;
         let oldValue = value.present;
         if(value.past.length !== 0 ){
-            oldValue = value.past[value.past.length-1]
-            newPastValue.pop();
-            newPresentValue = value.past[value.past.length-1];
+            oldValue = newPastValue.pop() ?? '';
         }
         setValue({
             past : newPastValue,
-            present : newPresentValue ?? '',
+            present : newPastValue[newPastValue.length - 1] ?? '',
             future : [...value.future,oldValue]
         });
     }

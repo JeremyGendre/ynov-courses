@@ -20,3 +20,7 @@
     opacity:0;
     transform: translateY(-3em);
 }
+
+.home-page-link:hover > .home-page-link-icon{
+    transform: translateX(0.5em);
+}
