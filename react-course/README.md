@@ -1,3 +1,13 @@
+# USAGE
+
+Make sure to have [yarn](https://classic.yarnpkg.com/en/docs/install/#windows-stable) or [npm](https://www.npmjs.com/get-npm) installed.
+
+then :
+- `yarn install` or `npm install`
+- `yarn start` to start the dev server
+
+#
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
