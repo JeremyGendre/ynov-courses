@@ -71,11 +71,11 @@ export default function FirstExercice(){
                 </div>
                 <div className="flex mx-4">
                     <label className="my-auto" htmlFor="filter-male">Homme</label>
-                    <input id="filter-male" className="mx-2" type="checkbox" checked={filterGenders.includes('male')} onChange={(e) => toggleFilter('male')}/>
+                    <input id="filter-male" className="mx-2 my-auto" type="checkbox" checked={filterGenders.includes('male')} onChange={(e) => toggleFilter('male')}/>
                 </div>
                 <div className='flex mx-4'>
                     <label className="my-auto" htmlFor="filter-female">Femme</label>
-                    <input id="filter-female" className="mx-2 p-1" type="checkbox" checked={filterGenders.includes('female')} onChange={(e) => toggleFilter('female')}/>
+                    <input id="filter-female" className="mx-2 p-1 my-auto" type="checkbox" checked={filterGenders.includes('female')} onChange={(e) => toggleFilter('female')}/>
                 </div>
             </div>
             {loading ? (
