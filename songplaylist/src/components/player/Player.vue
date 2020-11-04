@@ -27,8 +27,8 @@
                         </v-btn>
                     </div>
                 </div>
-                <div>
-                    <input type="range" class="w-full" min="0" :max="song.duration" v-model="musicTimer" />
+                <div class="mt-2">
+                    <input type="range" disabled class="w-full" min="0" :max="song.duration" v-model="musicTimer" />
                 </div>
             </v-card-text>
         </v-card>
@@ -46,8 +46,12 @@
         },
         data : () => ({
             musicTimer: 0,
-            playing: false
+            playing: false,
+            audioSong : null
         }),
+        created(){
+            this.audioSong = new Audio(this.song.src);
+        },
         methods: {
             play(){
                 if(this.song){
@@ -58,7 +62,7 @@
                             return;
                         }
                         this.musicTimer++;
-                    }, 1000)
+                    }, 1000);
                 }
             },
             pause(){
@@ -81,6 +85,13 @@
         watch:{
             song(){
                 this.musicTimer = 0;
+            },
+            playing(){
+                if(this.playing){
+                    this.audioSong.play();
+                }else{
+                    this.audioSong.pause();
+                }
             }
         }
     }

@@ -3,7 +3,7 @@ export class Song{
     src;// string
     artist;// string
     title;// string
-    constructor(src, duration, artist, title) {
+    constructor(src, duration, title, artist = 'Unknown') {
         this.src = src;
         this.duration = duration;
         this.artist = artist;

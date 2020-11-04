@@ -36,10 +36,10 @@
     created(){
       //fetch data
       this.songs = [
-        new Song('../assets/songs/test1.mp4', 120, 'Alan Walker', "The Spectre"),
-        new Song('../assets/songs/test2.mp4', 130, 'Alan Walker', "Faded"),
-        new Song('../assets/songs/test3.mp4', 127, 'Within temptation', "Iron"),
-        new Song('../assets/songs/test4.mp4', 145, 'Within temptation', "A shot in the dark"),
+        new Song('/songs/Alan Walker - Faded.mp3', 120, "The Spectre",'Alan Walker'),
+        new Song('/songs/Alan Walker - The Spectre.mp3', 130, "Faded",'Alan Walker'),
+        new Song('/songs/roby-fayer-ready-to-fight-fttom-gefen.mp3', 127, 'Ready to fight', 'Roby Fayer'),
+        new Song('/songs/wolves-my-time.mp3', 145, "Wolves-my-time"),
       ];
       this.actualSongIndex = 0;
     },
