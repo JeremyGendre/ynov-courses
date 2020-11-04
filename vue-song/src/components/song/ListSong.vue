@@ -13,7 +13,7 @@
             </div>
             <div class="ml-8 my-auto">
                 <div>Affichage :</div>
-                <input type="range" :disabled="this.search !== ''" v-model="nbSongs" min="0" :max="songs.length"/>
+                <input type="range" :disabled="this.search !== ''" v-model="nbSongs" min="0" :max="mySongs.length"/>
             </div>
         </div>
         <table>
@@ -21,12 +21,14 @@
                 <tr>
                     <th>Nom</th>
                     <th>Créé le</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="border-b-1 border-gray-400 hover:bg-gray-200" v-for="(song, index) in displayedSongs" :key="index">
+                <tr class="border-b-1 border-gray-400 hover:bg-gray-200" v-for="(song, index) in songsList" :key="index">
                     <td class="px-4 py-2">{{ song.name }}</td>
                     <td class="px-4 py-2">{{ displayDate(song.createdAt) }}</td>
+                    <td @click="() => deleteSong(index)" class="hover:text-red-600 cursor-pointer transition duration-150 px-2">X</td>
                 </tr>
             </tbody>
         </table>
@@ -45,7 +47,7 @@
         data(){
             return {
                 search : '',
-                displayedSongs: this.songs,
+                mySongs : this.songs,
                 nbSongs: this.songs.length
             };
         },
@@ -53,25 +55,20 @@
             displayDate(date){
                return displayDate(date);
             },
-            displaySongList(value = null){
-                if(value !== null){
-                    return this.songs.filter(song => song.name.includes(value));
+            displaySongList(){
+                if(this.search !== ''){
+                    return this.mySongs.filter(song => song.name.includes(this.search));
                 }
-                return this.songs.slice(0, this.nbSongs);
+                return this.mySongs.slice(0, this.nbSongs);
+            },
+            deleteSong(delIndex){
+                console.log(delIndex);
+                this.$emit('delete',delIndex);
             }
         },
-        watch: {
-            search(newVal){
-                this.nbSongs = this.songs.length;
-                if(newVal !== ''){
-                    console.log(this.displaySongList(newVal));
-                    this.displayedSongs = this.displaySongList(newVal);
-                }else{
-                    this.displayedSongs = this.songs;
-                }
-            },
-            nbSongs(){
-                this.displayedSongs = this.displaySongList();
+        computed:{
+            songsList(){
+                return this.displaySongList();
             }
         }
     }

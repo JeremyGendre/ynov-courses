@@ -1,6 +1,6 @@
 <template>
   <div class="container mx-auto">
-    <ListSong :songs="mySongs">
+    <ListSong :songs="mySongs" @delete="deleteSong">
       <template v-slot:azy>Un débile</template>
     </ListSong>
     <NewSong :addSong="addSong"></NewSong>
@@ -27,8 +27,11 @@
         if(this.mySongs.filter(oneSong => oneSong.name === song).length > 0){
           return false;
         }
-        this.mySongs.push(createNewSong(song));
+        this.mySongs.push(createNewSong(song)); console.log(this.mySongs);
         return true;
+      },
+      deleteSong(songIndex){
+        this.mySongs.splice(songIndex, 1);
       }
     },
   }
