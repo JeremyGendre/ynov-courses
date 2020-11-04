@@ -8,7 +8,13 @@
             mdi-play-circle
           </v-icon>
         </v-btn>
-        <Player v-else @next="nextSong" @previous="prevSong" :song="actualSong"/>
+        <Player v-else
+                @next="nextSong"
+                @previous="prevSong"
+                :song="songs[actualSongIndex]"
+                :isPrevPossible="isPrevPossible"
+                :isNextPossible="isNextPossible"
+        />
       </div>
     </div>
   </v-container>
@@ -25,15 +31,17 @@
       loading: false,
       started: false,
       songs: [],
-      actualSong: null
+      actualSongIndex: null
     }),
     created(){
       //fetch data
       this.songs = [
-        new Song('../assets/songs/test.mp4', 120, 'Dua Lipa', "Don't Start Now"),
-        new Song('../assets/songs/test2.mp4', 130, 'Alan Walker', "The Spectre"),
+        new Song('../assets/songs/test1.mp4', 120, 'Alan Walker', "The Spectre"),
+        new Song('../assets/songs/test2.mp4', 130, 'Alan Walker', "Faded"),
+        new Song('../assets/songs/test3.mp4', 127, 'Within temptation', "Iron"),
+        new Song('../assets/songs/test4.mp4', 145, 'Within temptation', "A shot in the dark"),
       ];
-      this.actualSong = this.songs[0];
+      this.actualSongIndex = 0;
     },
     methods: {
       handleStart(){
@@ -44,14 +52,25 @@
         }, 1000);
       },
       nextSong(){
-        console.log('next');
+          if(this.actualSongIndex < this.songs.length - 1){
+              this.actualSongIndex++;
+          }
       },
       prevSong(){
-        console.log('prev');
+          if(this.actualSongIndex > 0){
+              this.actualSongIndex--;
+          }
       }
     },
     components: {Player},
-    computed: {},
+    computed: {
+        isPrevPossible(){
+            return this.actualSongIndex > 0;
+        },
+        isNextPossible(){
+            return this.actualSongIndex < this.songs.length - 1;
+        },
+    },
     watch: {},
   };
 </script>
