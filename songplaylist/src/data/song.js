@@ -1,8 +1,8 @@
 export class Song{
-    duration;
-    src;
-    artist;
-    title;
+    duration; // number (seconds)
+    src;// string
+    artist;// string
+    title;// string
     constructor(src, duration, artist, title) {
         this.src = src;
         this.duration = duration;
