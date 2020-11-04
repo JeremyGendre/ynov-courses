@@ -1,0 +1,27 @@
+.w-full{
+    width:100%;
+}
+
+.h-full{
+    height:100%;
+}
+
+.font-bold{
+    font-weight: bold;
+}
+
+.button-rounded{
+    border-radius: 5px;
+}
+
+.flex-col{
+    flex-direction: column;
+}
+
+.text-lg{
+    font-size:1.3em;
+}
+
+.text-xl{
+    font-size:1.5em;
+}
