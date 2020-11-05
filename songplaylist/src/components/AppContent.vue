@@ -2,7 +2,7 @@
   <v-container class="h-full">
     <div class="d-flex h-full">
       <div class="ma-auto text-center">
-        <v-btn v-if="!started" x-large color="blue-grey" :elevation="10" class="ma-2 white--text button-rounded d-flex" :disabled="loading" :loading="loading" @click="handleStart">
+        <v-btn v-if="!started" x-large color="orange darken-3" :elevation="10" class="ma-2 white--text button-rounded d-flex" :disabled="loading" :loading="loading" @click="handleStart">
           <div class="my-auto">Start</div>
           <v-icon right>
             mdi-play-circle
@@ -39,7 +39,7 @@
         new Song('/songs/Alan Walker - Faded.mp3', "Faded",'Alan Walker'),
         new Song('/songs/Alan Walker - The Spectre.mp3', "The Spectre",'Alan Walker'),
         new Song('/songs/roby-fayer-ready-to-fight-fttom-gefen.mp3', 'Ready to fight', 'Roby Fayer'),
-        new Song('/songs/wolves-my-time.mp3', "Wolves-my-time"),
+        new Song('/songs/wolves-my-time.mp3', "My time", "Wolves"),
       ];
       this.actualSongIndex = 0;
     },

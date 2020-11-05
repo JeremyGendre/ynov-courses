@@ -1,7 +1,7 @@
 <template>
     <div>
         <v-card class="mx-auto my-card" max-width="344" elevation="20">
-            <v-img src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg" height="200px"></v-img>
+            <v-img :src="audioImage" height="200px"></v-img><!-- https://cdn.vuetifyjs.com/images/cards/sunshine.jpg -->
 
             <v-card-text class="card-text">
                 <div class="d-flex justify-space-between">
@@ -42,6 +42,8 @@
 
 <script>
     import '../../assets/css/Player.css';
+    import axios from 'axios';
+
     export default {
         name: 'Player',
         props: {
@@ -54,11 +56,13 @@
             audioSong : null,
             audioDuration: 0,
             audioTimer: 0,
+            audioImage: '/images/default_song.png'
         }),
         created(){
             this.audioSong = new Audio(this.song.src);
             this.getDuration();
             this.updateTimer();
+            this.getImage();
         },
         methods: {
             play(){
@@ -94,6 +98,12 @@
                     self.audioTimer = Math.ceil(self.audioSong.currentTime);
                 }, false);
             },
+            getImage(){
+                axios.get('https://picsum.photos/600/300.jpg', {responseType: "arraybuffer"}).then(result => {
+                    const buff = new Buffer(result.data);
+                    this.audioImage = `data:image/jpeg;base64,${buff.toString('base64')}`;
+                });
+            }
         },
         computed: {
             readableDuration(){
@@ -108,6 +118,7 @@
                 this.audioSong = new Audio(newVal.src);
                 this.getDuration();
                 this.updateTimer();
+                this.getImage();
                 if(this.playing){
                     this.audioSong.play();
                 }
