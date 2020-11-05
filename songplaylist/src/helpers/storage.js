@@ -12,6 +12,6 @@ export function getStoredItem(item){
  * @param item
  * @param value
  */
-export function setStoredItem(item, value){
+export function storeItem(item, value){
     localStorage.setItem(item, value);
 }

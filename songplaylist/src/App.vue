@@ -1,8 +1,6 @@
 <template>
   <v-app>
-    <!--<v-app-bar app color="transparent" class="fixed" elevation="10" dark>
-
-    </v-app-bar>-->
+    <!--<v-app-bar app color="transparent" class="fixed" elevation="10" dark></v-app-bar>-->
     <v-main>
       <div id="background" class="w-full h-full fixed" :style="(`background-image: url('${backgroundImage}')`)"></div>
       <Header/>

@@ -39,6 +39,8 @@
                 </div>
                 <div class="text-center w-full flex">
                     <v-slider
+                            v-model="audioVolume"
+                            min="0" max="1" step="0.01"
                             class="volume-slider mx-auto"
                             prepend-icon="mdi-volume-high"
                     ></v-slider>
@@ -51,6 +53,7 @@
 <script>
     import '../../assets/css/Player.css';
     import axios from 'axios';
+    import {getStoredItem, storeItem} from "../../helpers/storage";
 
     export default {
         name: 'Player',
@@ -65,14 +68,12 @@
             audioDuration: 0,
             audioTimer: 0,
             audioImage: null,
-            loadingImage: true
+            loadingImage: true,
+            audioVolume : getStoredItem('volume') ?? 1
         }),
         created(){
             this.audioSong = new Audio(this.song.src);
-            this.getDuration();
-            this.updateTimer();
-            this.getImage();
-            this.handleEnd();
+            this.setUpSong();
         },
         methods: {
             play(){
@@ -120,7 +121,17 @@
                     const buff = new Buffer(result.data);
                     this.audioImage = `data:image/jpeg;base64,${buff.toString('base64')}`;
                 });
-            }
+            },
+            setUpSong(){
+                this.getDuration();
+                this.updateTimer();
+                this.getImage();
+                this.handleEnd();
+                this.setUpVolume();
+            },
+            setUpVolume(){
+                this.audioSong.volume = getStoredItem('volume') ?? 1;
+            },
         },
         computed: {
             readableDuration(){
@@ -133,10 +144,7 @@
         watch:{
             song(newVal){
                 this.audioSong = new Audio(newVal.src);
-                this.getDuration();
-                this.updateTimer();
-                this.getImage();
-                this.handleEnd();
+                this.setUpSong();
                 if(this.playing){
                     this.audioSong.play();
                 }
@@ -156,6 +164,10 @@
             },
             audioImage(newImage){
                 this.$emit('updateBackground', newImage);
+            },
+            audioVolume(newVolume){
+                storeItem('volume', newVolume);
+                this.audioSong.volume = newVolume;
             }
         }
     }
