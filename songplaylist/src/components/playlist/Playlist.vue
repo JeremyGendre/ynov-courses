@@ -25,7 +25,7 @@
         components: {Songlist, Player},
         data: () => ({
             songs: [],
-            listenedSongs: [],
+            listenedSongIndexes: [],
             actualSongIndex: null,
             containerHeight: null
         }),
@@ -49,7 +49,9 @@
                 this.containerHeight = value;
             },
             handleSongChange(index){
-                this.actualSongIndex = index;
+                if(this.songs[index] !== undefined){
+                    this.actualSongIndex = index;
+                }
             }
         },
         computed: {
@@ -60,6 +62,12 @@
                 return this.actualSongIndex < this.songs.length - 1;
             },
         },
-        watch: {},
+        watch: {
+            actualSongIndex(newIndex){
+                if(this.listenedSongIndexes[newIndex] === undefined){
+                    this.listenedSongIndexes.push(newIndex);
+                }
+            }
+        },
     };
 </script>
