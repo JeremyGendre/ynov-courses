@@ -1,13 +1,11 @@
 <template>
   <v-app>
-      <!--
-    <v-app-bar app color="light-blue darken-3" elevation="10" dark>
-      <Header/>
-    </v-app-bar>
-    -->
+    <!--<v-app-bar app color="transparent" class="fixed" elevation="10" dark>
 
+    </v-app-bar>-->
     <v-main>
       <div id="background" class="w-full h-full fixed" :style="(`background-image: url('${backgroundImage}')`)"></div>
+      <Header/>
       <AppContent @updateBackground="updateBackground"/>
     </v-main>
   </v-app>
@@ -16,11 +14,13 @@
 <script>
 import AppContent from './components/AppContent';
 import './assets/css/App.css';
+import Header from "./components/header/Header";
 
 export default {
   name: 'App',
   components: {
-      AppContent,
+    Header,
+    AppContent,
   },
   data: ()=> ({
     backgroundImage: ''

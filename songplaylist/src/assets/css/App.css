@@ -17,6 +17,9 @@
 .flex-col{
     flex-direction: column;
 }
+.flex-row{
+    flex-direction: row;
+}
 
 .text-lg{
     font-size:1.3em;
@@ -30,8 +33,16 @@
     position: absolute;
 }
 
+.relative{
+    position: relative;
+}
+
 .fixed{
     position: fixed;
+}
+
+.cursor-pointer{
+    cursor:pointer;
 }
 
 #background{
