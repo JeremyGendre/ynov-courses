@@ -1,7 +1,7 @@
 <template>
-    <div id="header" class="fixed w-full d-flex justify-center py-3">
-        <HeaderLink text="Home" />
-        <HeaderLink text="Playlist" />
+    <div id="header" class="fixed w-full d-flex justify-center">
+        <HeaderLink text="Home" icon="home"/>
+        <HeaderLink text="Playlist" icon="playlist-music"/>
     </div>
 </template>
 

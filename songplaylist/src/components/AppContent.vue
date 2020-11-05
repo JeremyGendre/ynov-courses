@@ -27,6 +27,7 @@
 
   export default {
     name: "AppContent",
+    components: {Player},
     props: {},
     data: () => ({
       loading: false,
@@ -66,7 +67,6 @@
         this.$emit('updateBackground', url);
       }
     },
-    components: {Player},
     computed: {
         isPrevPossible(){
             return this.actualSongIndex > 0;
