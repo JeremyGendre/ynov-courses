@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-card class="mx-auto my-card" max-width="344" elevation="10">
+        <v-card class="mx-auto my-card" max-width="344" elevation="20">
             <v-img v-if="audioImage === null" src="/images/default_song.png" height="200px"></v-img>
             <v-img v-else :src="audioImage" height="200px"></v-img><!-- https://cdn.vuetifyjs.com/images/cards/sunshine.jpg -->
 
