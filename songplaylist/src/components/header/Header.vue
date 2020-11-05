@@ -1,5 +1,5 @@
 <template>
-    <div id="header" class="fixed w-full d-flex justify-center py-4">
+    <div id="header" class="fixed w-full d-flex justify-center py-3">
         <HeaderLink text="Home" />
         <HeaderLink text="Playlist" />
     </div>

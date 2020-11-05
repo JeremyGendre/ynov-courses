@@ -5,6 +5,8 @@
             <v-img v-else :src="audioImage" height="200px"></v-img><!-- https://cdn.vuetifyjs.com/images/cards/sunshine.jpg -->
 
             <v-card-text class="card-text">
+
+                <!-- TIMER -->
                 <div class="mt-2 mb-1">
                     <v-slider
                             hide-details
@@ -14,13 +16,22 @@
                             :label="readableDuration"
                     ></v-slider>
                 </div>
+
+                <!-- SONG INFORMATIONS -->
                 <div class="flex w-full">
                     <div class="text-center my-auto">
                         <div class="font-bold text-xl">{{ song.artist }}</div>
                         <div class="text-lg mt-1">{{ song.title }}</div>
                     </div>
                 </div>
+
+                <!-- ACTIONS -->
                 <div class="d-flex justify-center mt-4">
+                    <v-btn class="mx-2 my-auto" fab dark x-small :color="(audioLoop ? 'orange darken-3' : '' )" @click="toggleRepeat">
+                        <v-icon dark>
+                            mdi-repeat
+                        </v-icon>
+                    </v-btn>
                     <v-btn class="mx-2 my-auto" fab dark x-small :disabled="!isPrevPossible" @click="previous">
                         <v-icon dark>
                             mdi-skip-previous
@@ -36,9 +47,17 @@
                             mdi-skip-next
                         </v-icon>
                     </v-btn>
+                    <v-btn class="mx-2 my-auto" fab dark x-small>
+                        <v-icon dark>
+                            mdi-shuffle-variant
+                        </v-icon>
+                    </v-btn>
                 </div>
+
+                <!-- VOLUME -->
                 <div class="text-center w-full flex">
                     <v-slider
+                            hide-details
                             v-model="audioVolume"
                             min="0" max="1" step="0.01"
                             class="volume-slider mx-auto"
@@ -67,9 +86,10 @@
             audioSong : null,
             audioDuration: 0,
             audioTimer: 0,
+            audioLoop: false,
+            audioVolume : getStoredItem('volume') ?? 1,
             audioImage: null,
-            loadingImage: true,
-            audioVolume : getStoredItem('volume') ?? 1
+            loadingImage: true
         }),
         created(){
             this.audioSong = new Audio(this.song.src);
@@ -123,6 +143,7 @@
                 });
             },
             setUpSong(){
+                //TODO : do this stuff before (when the song is given to this component, to not have to do all of this setup methods)
                 this.getDuration();
                 this.updateTimer();
                 this.getImage();
@@ -132,6 +153,9 @@
             setUpVolume(){
                 this.audioSong.volume = getStoredItem('volume') ?? 1;
             },
+            toggleRepeat(){
+                this.audioLoop = !this.audioLoop;
+            }
         },
         computed: {
             readableDuration(){
@@ -168,6 +192,9 @@
             audioVolume(newVolume){
                 storeItem('volume', newVolume);
                 this.audioSong.volume = newVolume;
+            },
+            audioLoop(newLoopValue){
+                this.audioSong.loop = newLoopValue;
             }
         }
     }
