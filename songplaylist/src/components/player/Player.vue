@@ -53,7 +53,7 @@
             playing: false,
             audioSong : null,
             audioDuration: 0,
-            audioTimer: 0
+            audioTimer: 0,
         }),
         created(){
             this.audioSong = new Audio(this.song.src);
@@ -93,7 +93,7 @@
                 this.audioSong.addEventListener("timeupdate", function() {
                     self.audioTimer = Math.ceil(self.audioSong.currentTime);
                 }, false);
-            }
+            },
         },
         computed: {
             readableDuration(){
@@ -118,6 +118,11 @@
                     this.audioSong.play();
                 }else{
                     this.audioSong.pause();
+                }
+            },
+            audioTimer(newTime, oldTime){
+                if(Math.abs(newTime - oldTime) > 1){
+                    this.audioSong.currentTime = newTime;
                 }
             }
         }
