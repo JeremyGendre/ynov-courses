@@ -36,8 +36,8 @@
     created(){
       //fetch data
       this.songs = [
-        new Song('/songs/Alan Walker - Faded.mp3', 120, "The Spectre",'Alan Walker'),
-        new Song('/songs/Alan Walker - The Spectre.mp3', 130, "Faded",'Alan Walker'),
+        new Song('/songs/Alan Walker - Faded.mp3', 120, "Faded",'Alan Walker'),
+        new Song('/songs/Alan Walker - The Spectre.mp3', 130, "The Spectre",'Alan Walker'),
         new Song('/songs/roby-fayer-ready-to-fight-fttom-gefen.mp3', 127, 'Ready to fight', 'Roby Fayer'),
         new Song('/songs/wolves-my-time.mp3', 145, "Wolves-my-time"),
       ];

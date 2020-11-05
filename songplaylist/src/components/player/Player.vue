@@ -76,14 +76,20 @@
                 }
             },
             next(){
+                this.audioSong.pause();
                 this.$emit('next');
             },
             previous(){
+                this.audioSong.pause();
                 this.$emit('previous');
             }
         },
         watch:{
-            song(){
+            song(newVal){
+                this.audioSong = new Audio(newVal.src);
+                if(this.playing){
+                    this.audioSong.play();
+                }
                 this.musicTimer = 0;
             },
             playing(){
