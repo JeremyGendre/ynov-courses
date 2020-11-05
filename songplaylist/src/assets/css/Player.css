@@ -6,3 +6,7 @@
 .my-card{
     border-radius: 15px !important;
 }
+
+.volume-slider{
+    width:60%;
+}

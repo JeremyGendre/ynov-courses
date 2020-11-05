@@ -37,6 +37,12 @@
                         </v-icon>
                     </v-btn>
                 </div>
+                <div class="text-center w-full flex">
+                    <v-slider
+                            class="volume-slider mx-auto"
+                            prepend-icon="mdi-volume-high"
+                    ></v-slider>
+                </div>
             </v-card-text>
         </v-card>
     </div>
