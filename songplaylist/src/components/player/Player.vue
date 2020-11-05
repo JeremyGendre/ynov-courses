@@ -5,36 +5,37 @@
             <v-img v-else :src="audioImage" height="200px"></v-img><!-- https://cdn.vuetifyjs.com/images/cards/sunshine.jpg -->
 
             <v-card-text class="card-text">
-                <div class="d-flex justify-space-between">
-                    <v-btn class="mx-2 my-auto" fab dark color="light-blue darken-3" @click="toggle">
-                        <v-icon dark>
-                            {{ playing ? 'mdi-pause' : 'mdi-play' }}
-                        </v-icon>
-                    </v-btn>
-                    <div class="text-left my-auto">
-                        <div class="font-bold text-xl">{{ song.artist }}</div>
-                        <div class="text-lg">{{ song.title }}</div>
-                    </div>
-                    <div class="d-flex flex-col my-auto">
-                        <v-btn class="mx-2 my-1" fab dark x-small :disabled="!isPrevPossible" color="light-blue darken-3" @click="previous">
-                            <v-icon dark>
-                                mdi-skip-previous
-                            </v-icon>
-                        </v-btn>
-                        <v-btn class="mx-2" fab dark x-small :disabled="!isNextPossible" color="light-blue darken-3" @click="next">
-                            <v-icon dark>
-                                mdi-skip-next
-                            </v-icon>
-                        </v-btn>
-                    </div>
-                </div>
-                <div class="mt-2">
+                <div class="mt-2 mb-1">
                     <v-slider
+                            hide-details
                             v-model="audioTimer"
                             min="0" :max="audioDuration"
                             color="orange darken-3"
                             :label="readableDuration"
                     ></v-slider>
+                </div>
+                <div class="flex w-full">
+                    <div class="text-center my-auto">
+                        <div class="font-bold text-xl">{{ song.artist }}</div>
+                        <div class="text-lg mt-1">{{ song.title }}</div>
+                    </div>
+                </div>
+                <div class="d-flex justify-center mt-4">
+                    <v-btn class="mx-2 my-auto" fab dark x-small :disabled="!isPrevPossible" @click="previous">
+                        <v-icon dark>
+                            mdi-skip-previous
+                        </v-icon>
+                    </v-btn>
+                    <v-btn class="mx-2 my-auto" fab dark color="orange darken-3" @click="toggle">
+                        <v-icon dark>
+                            {{ playing ? 'mdi-pause' : 'mdi-play' }}
+                        </v-icon>
+                    </v-btn>
+                    <v-btn class="mx-2 my-auto" fab dark x-small :disabled="!isNextPossible" @click="next">
+                        <v-icon dark>
+                            mdi-skip-next
+                        </v-icon>
+                    </v-btn>
                 </div>
             </v-card-text>
         </v-card>
