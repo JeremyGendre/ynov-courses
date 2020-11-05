@@ -25,3 +25,19 @@
 .text-xl{
     font-size:1.5em;
 }
+
+.absolute{
+    position: absolute;
+}
+
+.fixed{
+    position: fixed;
+}
+
+#background{
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    filter: blur(9px);
+    -webkit-filter: blur(9px);
+}

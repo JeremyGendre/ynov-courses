@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-card class="mx-auto my-card" max-width="344" elevation="20">
+        <v-card class="mx-auto my-card" max-width="344" elevation="10">
             <v-img :src="audioImage" height="200px"></v-img><!-- https://cdn.vuetifyjs.com/images/cards/sunshine.jpg -->
 
             <v-card-text class="card-text">
@@ -135,6 +135,9 @@
                 if(Math.abs(newTime - oldTime) > 1){
                     this.audioSong.currentTime = newTime;
                 }
+            },
+            audioImage(newImage){
+                this.$emit('updateBackground', newImage);
             }
         }
     }

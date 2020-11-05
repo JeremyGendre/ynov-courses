@@ -7,7 +7,8 @@
     -->
 
     <v-main>
-      <AppContent/>
+      <div id="background" class="w-full h-full fixed" :style="(`background-image: url('${backgroundImage}')`)"></div>
+      <AppContent @updateBackground="updateBackground"/>
     </v-main>
   </v-app>
 </template>
@@ -18,11 +19,16 @@ import './assets/css/App.css';
 
 export default {
   name: 'App',
-
   components: {
       AppContent,
   },
-
-  data: () => ({}),
+  data: ()=> ({
+    backgroundImage: ''
+  }),
+  methods: {
+    updateBackground(url){
+      this.backgroundImage = url;
+    }
+  }
 };
 </script>

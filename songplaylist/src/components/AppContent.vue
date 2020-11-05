@@ -11,6 +11,7 @@
         <Player v-else
                 @next="nextSong"
                 @previous="prevSong"
+                @updateBackground="updateBackground"
                 :song="songs[actualSongIndex]"
                 :isPrevPossible="isPrevPossible"
                 :isNextPossible="isNextPossible"
@@ -60,6 +61,9 @@
           if(this.actualSongIndex > 0){
               this.actualSongIndex--;
           }
+      },
+      updateBackground(url){
+        this.$emit('updateBackground', url);
       }
     },
     components: {Player},
