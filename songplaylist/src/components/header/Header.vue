@@ -1,7 +1,7 @@
 <template>
     <div id="header" class="fixed w-full d-flex justify-center">
-        <HeaderLink text="Home" icon="home"/>
-        <HeaderLink text="Playlist" icon="playlist-music"/>
+        <HeaderLink text="Home" icon="home" href="/"/>
+        <HeaderLink text="Playlist" icon="playlist-music" href="/playlist"/>
     </div>
 </template>
 

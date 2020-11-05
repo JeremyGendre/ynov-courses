@@ -1,5 +1,5 @@
 <template>
-    <div class="header-link d-flex relative mx-5 cursor-pointer px-2 py-3">
+    <div class="header-link d-flex relative mx-5 cursor-pointer pr-2 py-3" @click="handleLinkClick">
         <v-icon class="my-auto mr-2">mdi-{{ icon }}</v-icon>
         <div class="my-auto">{{ text }}</div>
     </div>
@@ -10,7 +10,13 @@
         name: 'HeaderLink',
         props: {
             text: String,
-            icon: String
+            icon: String,
+            href: String
+        },
+        methods: {
+            handleLinkClick(){
+                this.$router.push(this.href);
+            }
         }
     };
 </script>

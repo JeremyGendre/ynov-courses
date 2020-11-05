@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-card class="mx-auto my-card" max-width="344" elevation="20">
+        <v-card id="player-card" ref="playerCard" class="mx-auto" max-width="344" elevation="20">
             <v-img v-if="audioImage === null" src="/images/default_song.png" height="200px"></v-img>
             <v-img v-else :src="audioImage" height="200px"></v-img><!-- https://cdn.vuetifyjs.com/images/cards/sunshine.jpg -->
 
@@ -73,6 +73,7 @@
     import '../../assets/css/Player.css';
     import axios from 'axios';
     import {getStoredItem, storeItem} from "../../helpers/storage";
+    import {updateBackground} from "../../helpers/functions";
 
     export default {
         name: 'Player',
@@ -186,8 +187,8 @@
                     this.audioSong.currentTime = newTime;
                 }
             },
-            audioImage(newImage){
-                this.$emit('updateBackground', newImage);
+            audioImage(newImageUrl){
+                updateBackground(newImageUrl);
             },
             audioVolume(newVolume){
                 storeItem('volume', newVolume);
@@ -196,6 +197,9 @@
             audioLoop(newLoopValue){
                 this.audioSong.loop = newLoopValue;
             }
+        },
+        updated() {
+            this.$emit('updateHeight', this.$refs.playerCard.$el.offsetHeight);
         }
     }
 </script>

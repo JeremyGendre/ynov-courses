@@ -1,14 +1,20 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import AppContent from "../components/AppContent";
+import Home from "../components/home/Home";
+import Playlist from "../components/playlist/Playlist";
 
 Vue.use(VueRouter);
 
 const routes = [
     {
         path: '/',
-        name: 'Home',
-        component: AppContent
+        name: 'home',
+        component: Home
+    },
+    {
+        path: '/playlist',
+        name: 'playlist',
+        component: Playlist
     },
 ];
 

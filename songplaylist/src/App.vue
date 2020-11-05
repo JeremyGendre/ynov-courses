@@ -2,17 +2,17 @@
   <v-app>
     <!--<v-app-bar app color="transparent" class="fixed" elevation="10" dark></v-app-bar>-->
     <v-main>
-      <div id="background" class="w-full h-full fixed" :style="(`background-image: url('${backgroundImage}')`)"></div>
+      <div id="background" class="w-full h-full fixed"></div>
       <Header/>
-      <AppContent @updateBackground="updateBackground"/>
+      <AppContent/>
     </v-main>
   </v-app>
 </template>
 
 <script>
 import AppContent from './components/AppContent';
-import './assets/css/App.css';
 import Header from "./components/header/Header";
+import './assets/css/App.css';
 
 export default {
   name: 'App',
@@ -20,13 +20,5 @@ export default {
     Header,
     AppContent,
   },
-  data: ()=> ({
-    backgroundImage: ''
-  }),
-  methods: {
-    updateBackground(url){
-      this.backgroundImage = url;
-    }
-  }
 };
 </script>

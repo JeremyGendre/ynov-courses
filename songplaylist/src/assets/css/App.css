@@ -11,7 +11,7 @@
 }
 
 .button-rounded{
-    border-radius: 5px;
+    border-radius: 5px !important;
 }
 
 .flex-col{
@@ -22,7 +22,7 @@
 }
 
 .text-lg{
-    font-size:1.3em;
+    font-size:1.3em !important;
 }
 
 .text-xl{
@@ -44,6 +44,19 @@
 .cursor-pointer{
     cursor:pointer;
 }
+
+.overflow-hidden{
+    overflow: hidden;
+}
+
+.overflow-y-scroll{
+    overflow-y: scroll;
+}
+
+.max-height-full{
+    max-height: 100%;
+}
+
 
 #background{
     background-size: cover;
