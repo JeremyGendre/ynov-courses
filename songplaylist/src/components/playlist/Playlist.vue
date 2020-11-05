@@ -5,9 +5,11 @@
                     @updateHeight="updateContainerHeight"
                     @next="nextSong"
                     @previous="prevSong"
+                    @toggleRandom="toggleRandom"
                     :song="songs[actualSongIndex]"
                     :isPrevPossible="isPrevPossible"
                     :isNextPossible="isNextPossible"
+                    :randomPlaylist="randomPlaylist"
             />
         </div>
         <div class="h-full relative">
@@ -25,6 +27,7 @@
     import Player from "../player/Player";
     import { songList } from "../../data/song";
     import Songlist from "./SongList";
+    import {getRandomInt} from "../../helpers/functions";
     export default {
         name: 'Playlist',
         components: {Songlist, Player},
@@ -32,7 +35,8 @@
             songs: [],
             listenedSongIndexes: [],
             actualSongIndex: null,
-            containerHeight: null
+            containerHeight: null,
+            randomPlaylist: false
         }),
         created(){
             //fetch data
@@ -40,8 +44,15 @@
             this.actualSongIndex = 0;
         },
         methods: {
-            nextSong(){
-                if(this.actualSongIndex < this.songs.length - 1){
+            nextSong(ended = false){
+                if(this.randomPlaylist && ended){
+                    const self = this;
+                    const nonListenedSongIndexes = [];
+                    this.songs.forEach((song, index) => {
+                        if(!self.listenedSongIndexes.includes(index)){ nonListenedSongIndexes.push(index); }
+                    });
+                    this.actualSongIndex = nonListenedSongIndexes[getRandomInt(0, nonListenedSongIndexes.length)];
+                } else if(this.actualSongIndex < this.songs.length - 1){
                     this.actualSongIndex++;
                 }
             },
@@ -57,6 +68,9 @@
                 if(this.songs[index] !== undefined){
                     this.actualSongIndex = index;
                 }
+            },
+            toggleRandom(){
+                this.randomPlaylist = !this.randomPlaylist;
             }
         },
         computed: {

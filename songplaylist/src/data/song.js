@@ -20,4 +20,5 @@ export const songList = [
     new Song('/songs/wolves-my-time.mp3', "My time", "Wolves"),
     new Song('/songs/wolves-my-time.mp3', "My time", "Wolves"),
     new Song('/songs/wolves-my-time.mp3', "My time", "Wolves"),
+    new Song('/songs/wolves-my-time.mp3', "My time", "Wolves"),
 ];

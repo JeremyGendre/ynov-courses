@@ -47,7 +47,7 @@
                             mdi-skip-next
                         </v-icon>
                     </v-btn>
-                    <v-btn class="mx-2 my-auto" fab dark x-small>
+                    <v-btn class="mx-2 my-auto" fab dark x-small :color="(randomPlaylist ? 'orange darken-3' : '' )" @click="toggleRandom">
                         <v-icon dark>
                             mdi-shuffle-variant
                         </v-icon>
@@ -80,7 +80,8 @@
         props: {
             song: Object,
             isNextPossible: Boolean,
-            isPrevPossible: Boolean
+            isPrevPossible: Boolean,
+            randomPlaylist: Boolean
         },
         data : () => ({
             playing: false,
@@ -111,8 +112,9 @@
                 }
             },
             next(){
+                const audioEnded = this.audioSong.ended;
                 this.audioSong.pause();
-                this.$emit('next');
+                this.$emit('next', audioEnded);
             },
             previous(){
                 this.audioSong.pause();
@@ -156,6 +158,9 @@
             },
             toggleRepeat(){
                 this.audioLoop = !this.audioLoop;
+            },
+            toggleRandom(){
+                this.$emit('toggleRandom');
             }
         },
         computed: {

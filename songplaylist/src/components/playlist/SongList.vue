@@ -1,6 +1,6 @@
 <template>
     <v-card id="list-card" class="mx-auto text-left overflow-y-scroll h-full"
-            max-width="400" :max-height="containerHeight" tile>
+            max-width="400" :height="containerHeight" tile>
         <v-list>
             <v-list-item-group
                     v-model="selectedItem"
