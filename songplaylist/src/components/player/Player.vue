@@ -28,7 +28,12 @@
                     </div>
                 </div>
                 <div class="mt-2">
-                    <input type="range" class="w-full" min="0" :max="audioDuration" v-model="musicTimer" />
+                    <v-slider
+                            v-model="audioTimer"
+                            min="0" :max="audioDuration"
+                            color="orange darken-3"
+                            :label="readableDuration"
+                    ></v-slider>
                 </div>
             </v-card-text>
         </v-card>
@@ -45,27 +50,19 @@
             isPrevPossible: Boolean
         },
         data : () => ({
-            musicTimer: 0,
             playing: false,
             audioSong : null,
-            audioDuration: 0
+            audioDuration: 0,
+            audioTimer: 0
         }),
         created(){
             this.audioSong = new Audio(this.song.src);
             this.getDuration();
+            this.updateTimer();
         },
         methods: {
             play(){
-                if(this.song){
-                    this.playing = true;
-                    const timeInterval = setInterval(() => {
-                        if(this.musicTimer > this.song.duration || this.playing === false){
-                            clearInterval(timeInterval);
-                            return;
-                        }
-                        this.musicTimer++;
-                    }, 1000);
-                }
+                this.playing = true;
             },
             pause(){
                 this.playing = false;
@@ -90,26 +87,38 @@
                 this.audioSong.addEventListener("loadedmetadata", function(e){
                     self.audioDuration = Math.ceil(e.currentTarget.duration);
                 });
+            },
+            updateTimer(){
+                const self = this;
+                this.audioSong.addEventListener("timeupdate", function() {
+                    self.audioTimer = Math.ceil(self.audioSong.currentTime);
+                }, false);
+            }
+        },
+        computed: {
+            readableDuration(){
+                const time = this.audioDuration - this.audioTimer;
+                const minutes = Math.floor( time / 60);
+                const seconds = time - (minutes * 60);
+                return minutes + ':' + (seconds < 10 ? '0' + seconds : seconds);
             }
         },
         watch:{
             song(newVal){
                 this.audioSong = new Audio(newVal.src);
                 this.getDuration();
+                this.updateTimer();
                 if(this.playing){
                     this.audioSong.play();
                 }
-                this.musicTimer = 0;
+                this.audioTimer = 0;
             },
-            playing(){
-                if(this.playing){
+            playing(isPlaying){
+                if(isPlaying){
                     this.audioSong.play();
                 }else{
                     this.audioSong.pause();
                 }
-            },
-            musicTimer(){
-                this.audioSong.currentTime = this.musicTimer;
             }
         }
     }
