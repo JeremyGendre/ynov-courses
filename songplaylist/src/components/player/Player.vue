@@ -65,6 +65,7 @@
             this.getDuration();
             this.updateTimer();
             this.getImage();
+            this.handleEnd();
         },
         methods: {
             play(){
@@ -100,6 +101,12 @@
                     self.audioTimer = Math.ceil(self.audioSong.currentTime);
                 }, false);
             },
+            handleEnd(){
+                const self = this;
+                this.audioSong.addEventListener("ended", function() {
+                    self.next();
+                }, false);
+            },
             getImage(){
                 this.audioImage = null;
                 axios.get('https://picsum.photos/600/300.jpg', {responseType: "arraybuffer"}).then(result => {
@@ -122,6 +129,7 @@
                 this.getDuration();
                 this.updateTimer();
                 this.getImage();
+                this.handleEnd();
                 if(this.playing){
                     this.audioSong.play();
                 }
