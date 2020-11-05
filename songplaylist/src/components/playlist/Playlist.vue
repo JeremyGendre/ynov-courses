@@ -11,7 +11,12 @@
             />
         </div>
         <div class="h-full relative">
-            <Songlist @changeSong="handleSongChange" :containerHeight="containerHeight" :songs="songs"/>
+            <Songlist
+                    @changeSong="handleSongChange"
+                    :containerHeight="containerHeight"
+                    :songs="songs"
+                    :currentIndex="actualSongIndex"
+            />
         </div>
     </div>
 </template>

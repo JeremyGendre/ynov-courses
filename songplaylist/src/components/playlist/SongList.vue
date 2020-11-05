@@ -20,7 +20,8 @@
         components: {SongItem},
         props:{
             songs: Array,
-            containerHeight: Number
+            containerHeight: Number,
+            currentIndex: Number
         },
         data: () => ({
             selectedItem: 0,
@@ -28,6 +29,9 @@
         watch:{
             selectedItem(newIndex){
                 this.$emit('changeSong', newIndex);
+            },
+            currentIndex(newIndex){
+                this.selectedItem = newIndex;
             }
         }
     };

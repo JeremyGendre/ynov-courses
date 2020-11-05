@@ -168,6 +168,7 @@
         },
         watch:{
             song(newVal){
+                this.audioSong.pause();
                 this.audioSong = new Audio(newVal.src);
                 this.setUpSong();
                 if(this.playing){
