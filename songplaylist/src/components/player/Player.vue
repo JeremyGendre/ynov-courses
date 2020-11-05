@@ -28,7 +28,7 @@
                     </div>
                 </div>
                 <div class="mt-2">
-                    <input type="range" disabled class="w-full" min="0" :max="song.duration" v-model="musicTimer" />
+                    <input type="range" class="w-full" min="0" :max="audioDuration" v-model="musicTimer" />
                 </div>
             </v-card-text>
         </v-card>
@@ -47,10 +47,12 @@
         data : () => ({
             musicTimer: 0,
             playing: false,
-            audioSong : null
+            audioSong : null,
+            audioDuration: 0
         }),
         created(){
             this.audioSong = new Audio(this.song.src);
+            this.getDuration();
         },
         methods: {
             play(){
@@ -82,11 +84,18 @@
             previous(){
                 this.audioSong.pause();
                 this.$emit('previous');
+            },
+            getDuration(){
+                const self = this;
+                this.audioSong.addEventListener("loadedmetadata", function(e){
+                    self.audioDuration = Math.ceil(e.currentTarget.duration);
+                });
             }
         },
         watch:{
             song(newVal){
                 this.audioSong = new Audio(newVal.src);
+                this.getDuration();
                 if(this.playing){
                     this.audioSong.play();
                 }
@@ -98,6 +107,9 @@
                 }else{
                     this.audioSong.pause();
                 }
+            },
+            musicTimer(){
+                this.audioSong.currentTime = this.musicTimer;
             }
         }
     }
