@@ -25,5 +25,10 @@
         data: () => ({
             selectedItem: 0,
         }),
+        watch:{
+            selectedItem(newIndex){
+                this.$emit('changeSong', newIndex);
+            }
+        }
     };
 </script>

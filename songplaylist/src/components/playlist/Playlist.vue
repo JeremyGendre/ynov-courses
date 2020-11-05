@@ -11,7 +11,7 @@
             />
         </div>
         <div class="h-full relative">
-            <Songlist :containerHeight="containerHeight" :songs="songs"/>
+            <Songlist @changeSong="handleSongChange" :containerHeight="containerHeight" :songs="songs"/>
         </div>
     </div>
 </template>
@@ -46,8 +46,10 @@
                 }
             },
             updateContainerHeight(value){
-                console.log(value);
                 this.containerHeight = value;
+            },
+            handleSongChange(index){
+                this.actualSongIndex = index;
             }
         },
         computed: {

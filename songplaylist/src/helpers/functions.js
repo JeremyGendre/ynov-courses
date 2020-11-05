@@ -20,6 +20,16 @@ export function shuffle(array)
 }
 
 /**
+ * Return a random int between min and max
+ * @param min
+ * @param max
+ * @returns {number}
+ */
+export function getRandomInt(min, max) {
+    return Math.floor(Math.random() * Math.floor(max)) + Math.floor(min);
+}
+
+/**
  * Update the background with the given url
  * @param url
  */
