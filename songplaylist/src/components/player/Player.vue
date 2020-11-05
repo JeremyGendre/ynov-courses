@@ -1,7 +1,8 @@
 <template>
     <div>
         <v-card class="mx-auto my-card" max-width="344" elevation="10">
-            <v-img :src="audioImage" height="200px"></v-img><!-- https://cdn.vuetifyjs.com/images/cards/sunshine.jpg -->
+            <v-img v-if="audioImage === null" src="/images/default_song.png" height="200px"></v-img>
+            <v-img v-else :src="audioImage" height="200px"></v-img><!-- https://cdn.vuetifyjs.com/images/cards/sunshine.jpg -->
 
             <v-card-text class="card-text">
                 <div class="d-flex justify-space-between">
@@ -56,7 +57,8 @@
             audioSong : null,
             audioDuration: 0,
             audioTimer: 0,
-            audioImage: '/images/default_song.png'
+            audioImage: null,
+            loadingImage: true
         }),
         created(){
             this.audioSong = new Audio(this.song.src);
@@ -99,6 +101,7 @@
                 }, false);
             },
             getImage(){
+                this.audioImage = null;
                 axios.get('https://picsum.photos/600/300.jpg', {responseType: "arraybuffer"}).then(result => {
                     const buff = new Buffer(result.data);
                     this.audioImage = `data:image/jpeg;base64,${buff.toString('base64')}`;
