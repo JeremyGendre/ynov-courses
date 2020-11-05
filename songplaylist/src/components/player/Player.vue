@@ -201,6 +201,9 @@
         },
         updated() {
             this.$emit('updateHeight', this.$refs.playerCard.$el.offsetHeight);
+        },
+        beforeDestroy() {
+            this.audioSong.pause();
         }
     }
 </script>
