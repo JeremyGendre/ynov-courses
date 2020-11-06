@@ -47,7 +47,7 @@
                             mdi-skip-next
                         </v-icon>
                     </v-btn>
-                    <v-btn class="mx-2 my-auto" fab dark x-small :color="(randomPlaylist ? 'orange darken-3' : '' )" @click="toggleRandom">
+                    <v-btn class="mx-2 my-auto" fab dark x-small :disabled="audioLoop" :color="(randomPlaylist ? 'orange darken-3' : '' )" @click="toggleRandom">
                         <v-icon dark>
                             mdi-shuffle-variant
                         </v-icon>
@@ -158,6 +158,7 @@
             },
             toggleRepeat(){
                 this.audioLoop = !this.audioLoop;
+                this.$emit('toggleLoop', this.audioLoop);
             },
             toggleRandom(){
                 this.$emit('toggleRandom');
