@@ -58,8 +58,8 @@
             this.actualSongIndex = 0;
         },
         methods: {
-            nextSong(ended = false){
-                if(this.randomPlaylist && ended){
+            nextSong(){
+                if(this.randomPlaylist && this.listenedSongIndexes.length < this.songs.length){
                     const self = this;
                     const nonListenedSongIndexes = [];
                     this.songs.forEach((song, index) => {
@@ -124,7 +124,7 @@
         },
         watch: {
             actualSongIndex(newIndex){
-                if(this.listenedSongIndexes[newIndex] === undefined){
+                if(!this.listenedSongIndexes.includes(newIndex)){
                     this.listenedSongIndexes.push(newIndex);
                 }
             }

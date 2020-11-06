@@ -32,7 +32,7 @@
                             mdi-repeat
                         </v-icon>
                     </v-btn>
-                    <v-btn class="mx-2 my-auto" fab dark x-small :disabled="!isPrevPossible" @click="previous">
+                    <v-btn class="mx-2 my-auto" fab dark x-small :disabled="!isPrevPossible || randomPlaylist" @click="previous">
                         <v-icon dark>
                             mdi-skip-previous
                         </v-icon>
@@ -42,7 +42,7 @@
                             {{ playing ? 'mdi-pause' : 'mdi-play' }}
                         </v-icon>
                     </v-btn>
-                    <v-btn class="mx-2 my-auto" fab dark x-small :disabled="!isNextPossible" @click="next">
+                    <v-btn class="mx-2 my-auto" fab dark x-small :disabled="!isNextPossible && !randomPlaylist" @click="next">
                         <v-icon dark>
                             mdi-skip-next
                         </v-icon>
@@ -113,9 +113,8 @@
                 }
             },
             next(){
-                const audioEnded = this.audioSong.ended;
                 this.audioSong.pause();
-                this.$emit('next', audioEnded);
+                this.$emit('next');
             },
             previous(){
                 this.audioSong.pause();
