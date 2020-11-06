@@ -28,7 +28,7 @@
 
 <script>
     import Player from "../player/Player";
-    import { songList } from "../../data/song";
+    import { rockSongsList } from "../../data/song";
     import Songlist from "./SongList";
     import {getRandomInt} from "../../helpers/functions";
     import MySnackbar from "../snackbar/MySnackbar";
@@ -54,7 +54,7 @@
         }),
         created(){
             //fetch data
-            this.songs = songList;
+            this.songs = rockSongsList;
             this.actualSongIndex = 0;
         },
         methods: {

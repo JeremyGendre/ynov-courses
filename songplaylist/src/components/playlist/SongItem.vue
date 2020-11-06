@@ -2,7 +2,7 @@
     <v-list-item two-line>
         <v-list-item-content>
             <v-list-item-title v-text="title"/>
-            <v-list-item-subtitle v-text="text"/>
+            <v-list-item-subtitle v-text="artist"/>
         </v-list-item-content>
     </v-list-item>
 </template>
@@ -11,8 +11,8 @@
     export default {
         name: 'SongItem',
         props: {
-            title: String,
-            text: String
+            artist: String,
+            title: String
         }
     };
 </script>

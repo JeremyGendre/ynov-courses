@@ -6,7 +6,9 @@
                     v-model="selectedItem"
                     color="textPrimary"
             >
-                <SongItem v-for="(song, index) in songs" :key="index" :class="(listenedSongs.includes(index) && index !== selectedItem ? 'opacity-50' : '')" :title="song.artist" :text="song.title"></SongItem>
+                <SongItem v-for="(song, index) in songs" :key="index"
+                          :class="(listenedSongs.includes(index) && index !== selectedItem ? 'opacity-50' : '')"
+                          :artist="song.artist" :title="song.title"></SongItem>
             </v-list-item-group>
         </v-list>
     </v-card>
