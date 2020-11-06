@@ -1,3 +1,6 @@
+body{
+    background-color: white;
+}
 .w-full{
     width:100%;
 }
@@ -32,13 +35,17 @@
 .absolute{
     position: absolute;
 }
-
 .relative{
     position: relative;
 }
-
 .fixed{
     position: fixed;
+}
+.sticky{
+     position: sticky;
+}
+.top-0{
+    top:0;
 }
 
 .cursor-pointer{
@@ -59,6 +66,10 @@
 
 .opacity-50{
     opacity: 0.5;
+}
+
+.self-stretch{
+    align-self: stretch;
 }
 
 
