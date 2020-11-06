@@ -39,7 +39,6 @@ export const rockSongsList = [
     new Song('/songs/nightcore-zombie-rock-version-lyricsbad-wolves.mp3', 'Zombie', 'Nightcore remix'),
     new Song('/songs/Within Temptation (feat. Howard Jones) - Dangerous Lyrics.mp3', 'Dangerous', 'Within Temptation'),
     new Song('/songs/within-temptation-supernova-official-music-video.mp3', 'Supernova', 'Within Temptation'),
-    new Song('/songs/roby-fayer-ready-to-fight-fttom-gefen.mp3', 'Ready to fight', 'Roby Fayer'),
     new Song('/songs/wolves-my-time.mp3', "My time", "Wolves"),
 ];
 
