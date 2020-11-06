@@ -1,0 +1,8 @@
+@media (max-width: 600px) {
+    #player-card{
+        border-radius: 15px 15px 0 0 !important;
+    }
+    #playlist-container{
+        display: block !important;
+    }
+}

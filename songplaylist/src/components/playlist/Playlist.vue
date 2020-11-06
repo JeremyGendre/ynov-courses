@@ -1,5 +1,5 @@
 <template>
-    <div class="d-flex relative">
+    <div id="playlist-container" class="d-flex relative">
         <div class="h-full">
             <Player
                     @updateHeight="updateContainerHeight"

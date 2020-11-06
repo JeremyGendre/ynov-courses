@@ -13,6 +13,7 @@
 import AppContent from './components/AppContent';
 import Header from "./components/header/Header";
 import './assets/css/App.css';
+import './assets/css/Responsive.css';
 
 export default {
   name: 'App',
