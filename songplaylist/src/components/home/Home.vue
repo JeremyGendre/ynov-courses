@@ -1,5 +1,5 @@
 <template>
-    <v-btn x-large color="orange darken-3" :elevation="10" class="ma-2 white--text button-rounded d-flex"
+    <v-btn x-large color="primary" :elevation="10" class="ma-2 white--text button-rounded d-flex"
            :disabled="loading" :loading="loading" @click="handleStart">
         <div class="my-auto">Start</div>
         <v-icon right class="text-lg">

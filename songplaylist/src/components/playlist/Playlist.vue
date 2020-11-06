@@ -29,7 +29,7 @@
             {{ snackbarText }}
             <template v-slot:action="{ attrs }">
                 <v-btn
-                        color="orange"
+                        color="textPrimary"
                         text
                         v-bind="attrs"
                         @click="snackbar = false"

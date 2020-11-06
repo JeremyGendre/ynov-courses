@@ -4,7 +4,7 @@
         <v-list>
             <v-list-item-group
                     v-model="selectedItem"
-                    color="orange darker-3"
+                    color="textPrimary"
             >
                 <SongItem v-for="(song, index) in songs" :key="index" :title="song.artist" :text="song.title"></SongItem>
             </v-list-item-group>

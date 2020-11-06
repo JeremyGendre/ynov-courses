@@ -35,5 +35,8 @@ export function getRandomInt(min, max) {
  */
 export function updateBackground(url)
 {
-    document.getElementById('background').style.backgroundImage = `url('${url}')`;
+    const background = document.getElementById('background');
+    if(background){
+        background.style.backgroundImage = `url('${url}')`;
+    }
 }

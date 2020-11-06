@@ -12,7 +12,7 @@
                             hide-details
                             v-model="audioTimer"
                             min="0" :max="audioDuration"
-                            color="orange darken-3"
+                            color="primary"
                             :label="readableDuration"
                     ></v-slider>
                 </div>
@@ -27,7 +27,7 @@
 
                 <!-- ACTIONS -->
                 <div class="d-flex justify-center mt-4">
-                    <v-btn class="mx-2 my-auto" fab dark x-small :color="(audioLoop ? 'orange darken-3' : '' )" @click="toggleRepeat">
+                    <v-btn class="mx-2 my-auto" fab dark x-small :color="(audioLoop ? 'primary' : '' )" @click="toggleRepeat">
                         <v-icon dark>
                             mdi-repeat
                         </v-icon>
@@ -37,7 +37,7 @@
                             mdi-skip-previous
                         </v-icon>
                     </v-btn>
-                    <v-btn class="mx-2 my-auto" fab dark color="orange darken-3" @click="toggle">
+                    <v-btn class="mx-2 my-auto" fab dark color="primary" @click="toggle">
                         <v-icon dark>
                             {{ playing ? 'mdi-pause' : 'mdi-play' }}
                         </v-icon>
@@ -47,7 +47,7 @@
                             mdi-skip-next
                         </v-icon>
                     </v-btn>
-                    <v-btn class="mx-2 my-auto" fab dark x-small :disabled="audioLoop" :color="(randomPlaylist ? 'orange darken-3' : '' )" @click="toggleRandom">
+                    <v-btn class="mx-2 my-auto" fab dark x-small :disabled="audioLoop" :color="(randomPlaylist ? 'primary' : '' )" @click="toggleRandom">
                         <v-icon dark>
                             mdi-shuffle-variant
                         </v-icon>
@@ -59,6 +59,7 @@
                     <v-slider
                             hide-details
                             v-model="audioVolume"
+                            color="secondary"
                             min="0" max="1" step="0.01"
                             class="volume-slider mx-auto"
                             prepend-icon="mdi-volume-high"
