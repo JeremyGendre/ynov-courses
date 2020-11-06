@@ -1,17 +1,19 @@
 <template>
-    <v-card id="list-card" class="mx-auto text-left overflow-y-scroll h-full"
-            :max-width="containerStyle !== null ? containerStyle.width : null" :height="containerStyle !== null ? containerStyle.height : null" tile>
-        <v-list>
-            <v-list-item-group
-                    v-model="selectedItem"
-                    color="textPrimary"
-            >
-                <SongItem v-for="(song, index) in songs" :key="index"
-                          :class="(listenedSongs.includes(index) && index !== selectedItem ? 'opacity-50' : '')"
-                          :artist="song.artist" :title="song.title"></SongItem>
-            </v-list-item-group>
-        </v-list>
-    </v-card>
+    <perfect-scrollbar id="list-card" :height="containerStyle !== null ? containerStyle.height : null">
+        <v-card class="mx-auto text-left h-full"
+                :max-width="containerStyle !== null ? containerStyle.width : null" :height="containerStyle !== null ? containerStyle.height : null" tile>
+            <v-list>
+                <v-list-item-group
+                        v-model="selectedItem"
+                        color="textPrimary"
+                >
+                    <SongItem v-for="(song, index) in songs" :key="index"
+                              :class="(listenedSongs.includes(index) && index !== selectedItem ? 'opacity-50' : '')"
+                              :artist="song.artist" :title="song.title"></SongItem>
+                </v-list-item-group>
+            </v-list>
+        </v-card>
+    </perfect-scrollbar>
 </template>
 
 <script>
