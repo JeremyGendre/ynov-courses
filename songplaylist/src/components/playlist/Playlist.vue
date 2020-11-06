@@ -22,23 +22,7 @@
                     :listenedSongs="listenedSongIndexes"
             />
         </div>
-        <v-snackbar
-                v-model="snackbar"
-                timeout="2000"
-                color="button-rounded"
-        >
-            {{ snackbarText }}
-            <template v-slot:action="{ attrs }">
-                <v-btn
-                        color="textPrimary"
-                        text
-                        v-bind="attrs"
-                        @click="snackbar = false"
-                >
-                    Ok
-                </v-btn>
-            </template>
-        </v-snackbar>
+        <MySnackbar :options="snackbar"/>
     </div>
 </template>
 
@@ -47,17 +31,26 @@
     import { songList } from "../../data/song";
     import Songlist from "./SongList";
     import {getRandomInt} from "../../helpers/functions";
+    import MySnackbar from "../snackbar/MySnackbar";
+
+    const defaultSnackbar = {
+        show: false,
+        text: '',
+        btnText: 'Ok',
+        btnAction: () => {},
+        timeout: 2000
+    };
+
     export default {
         name: 'Playlist',
-        components: {Songlist, Player},
+        components: {MySnackbar, Songlist, Player},
         data: () => ({
             songs: [],
             listenedSongIndexes: [],
             actualSongIndex: null,
             containerStyle: null,
             randomPlaylist: false,
-            snackbarText: '',
-            snackbar: false
+            snackbar: defaultSnackbar
         }),
         created(){
             //fetch data
@@ -75,6 +68,19 @@
                     this.actualSongIndex = nonListenedSongIndexes[getRandomInt(0, nonListenedSongIndexes.length)];
                 } else if(this.actualSongIndex < this.songs.length - 1){
                     this.actualSongIndex++;
+                }else{
+                    this.snackbar = {
+                        ...defaultSnackbar,
+                        btnText: 'Replay',
+                        timeout: -1,
+                        show: true,
+                        text: 'The playlist is finished.',
+                        btnAction: () => {
+                            this.listenedSongIndexes = [];
+                            this.actualSongIndex = 0;
+                            this.snackbar.show = false;
+                        }
+                    };
                 }
             },
             prevSong(){
@@ -92,14 +98,20 @@
             },
             toggleRandom(){
                 this.randomPlaylist = !this.randomPlaylist;
-                this.showSnackbar("Random track " + (this.randomPlaylist ? 'turned on' : 'turned off'));
+                this.snackbar = {
+                    ...defaultSnackbar,
+                    show: true,
+                    text: "Random track " + (this.randomPlaylist ? 'turned on' : 'turned off'),
+                    btnAction: () => { this.snackbar.show = false }
+                };
             },
             toggleLoop(isLooped){
-                this.showSnackbar((isLooped ? 'Current track is being looped' : 'Track loop turned off'));
-            },
-            showSnackbar(value){
-                this.snackbar = true;
-                this.snackbarText = value;
+                this.snackbar = {
+                    ...defaultSnackbar,
+                    show: true,
+                    text: (isLooped ? 'Current track is being looped' : 'Track loop turned off'),
+                    btnAction: () => { this.snackbar.show = false }
+                };
             }
         },
         computed: {
