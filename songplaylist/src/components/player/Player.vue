@@ -207,7 +207,11 @@
             }
         },
         updated() {
-            this.$emit('updateHeight', this.$refs.playerCard.$el.offsetHeight);
+            const style = {
+                height: this.$refs.playerCard.$el.offsetHeight,
+                width: this.$refs.playerCard.$el.offsetWidth,
+            };
+            this.$emit('updateStyle', style);
         },
         beforeDestroy() {
             this.audioSong.pause();

@@ -2,7 +2,7 @@
     <div id="playlist-container" class="d-flex relative">
         <div class="h-full">
             <Player
-                    @updateHeight="updateContainerHeight"
+                    @updateStyle="updateContainerStyle"
                     @next="nextSong"
                     @previous="prevSong"
                     @toggleRandom="toggleRandom"
@@ -16,9 +16,10 @@
         <div class="h-full relative">
             <Songlist
                     @changeSong="handleSongChange"
-                    :containerHeight="containerHeight"
+                    :containerStyle="containerStyle"
                     :songs="songs"
                     :currentIndex="actualSongIndex"
+                    :listenedSongs="listenedSongIndexes"
             />
         </div>
         <v-snackbar
@@ -53,7 +54,7 @@
             songs: [],
             listenedSongIndexes: [],
             actualSongIndex: null,
-            containerHeight: null,
+            containerStyle: null,
             randomPlaylist: false,
             snackbarText: '',
             snackbar: false
@@ -81,8 +82,8 @@
                     this.actualSongIndex--;
                 }
             },
-            updateContainerHeight(value){
-                this.containerHeight = value;
+            updateContainerStyle(value){
+                this.containerStyle = value;
             },
             handleSongChange(index){
                 if(this.songs[index] !== undefined){

@@ -1,12 +1,12 @@
 <template>
     <v-card id="list-card" class="mx-auto text-left overflow-y-scroll h-full"
-            max-width="400" :height="containerHeight" tile>
+            :max-width="containerStyle !== null ? containerStyle.width : null" :height="containerStyle !== null ? containerStyle.height : null" tile>
         <v-list>
             <v-list-item-group
                     v-model="selectedItem"
                     color="textPrimary"
             >
-                <SongItem v-for="(song, index) in songs" :key="index" :title="song.artist" :text="song.title"></SongItem>
+                <SongItem v-for="(song, index) in songs" :key="index" :class="(listenedSongs.includes(index) && index !== selectedItem ? 'opacity-50' : '')" :title="song.artist" :text="song.title"></SongItem>
             </v-list-item-group>
         </v-list>
     </v-card>
@@ -20,8 +20,9 @@
         components: {SongItem},
         props:{
             songs: Array,
-            containerHeight: Number,
-            currentIndex: Number
+            containerStyle: Object,
+            currentIndex: Number,
+            listenedSongs: Array
         },
         data: () => ({
             selectedItem: 0,
