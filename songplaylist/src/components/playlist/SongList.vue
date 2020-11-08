@@ -1,6 +1,6 @@
 <template>
     <perfect-scrollbar id="list-card" :height="containerStyle !== null ? containerStyle.height : null">
-        <v-card class="mx-auto text-left h-full"
+        <v-card class="mx-auto text-left h-full song-list-card"
                 :max-width="containerStyle !== null ? containerStyle.width : null" :height="containerStyle !== null ? containerStyle.height : null" tile>
             <v-list>
                 <v-list-item-group

@@ -2,7 +2,7 @@
     <v-snackbar
             v-model="options.show"
             :timeout="options.timeout"
-            color="button-rounded"
+            color="rounded"
     >
         {{ options.text }}
         <template v-slot:action="{ attrs }">

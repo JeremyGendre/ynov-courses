@@ -8,5 +8,6 @@
     #list-card{
         border-top: solid 2px #ef6c00;
         border-left: unset !important;
+        border-radius: 0 0 5px 5px !important;
     }
 }
