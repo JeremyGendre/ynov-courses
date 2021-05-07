@@ -14,7 +14,8 @@
     "tailwindcss": "^2.1.2",
     "vue": "^2.6.12",
     "vue-router": "^3.5.1",
-    "vuetify": "^2.4.11"
+    "vuetify": "^2.4.11",
+    "ssri": "^8.0.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.12",
