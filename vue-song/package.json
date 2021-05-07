@@ -15,7 +15,8 @@
     "vue": "^2.6.12",
     "vue-router": "^3.5.1",
     "vuetify": "^2.4.11",
-    "ssri": "^8.0.1"
+    "ssri": "^8.0.1",
+    "hosted-git-info": "^3.0.8"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.12",
