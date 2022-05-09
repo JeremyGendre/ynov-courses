@@ -18,3 +18,19 @@
   font-weight: bold;
   margin-bottom: 0.2em;
 }
+
+.box-clicked{
+  opacity:0.5;
+  transition: opacity 0.15s ease-in-out;
+  animation: 1s slideOut ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes slideOut {
+  0%{
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-90%);
+  }
+}
