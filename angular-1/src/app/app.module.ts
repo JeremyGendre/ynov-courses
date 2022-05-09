@@ -14,7 +14,9 @@ import { HeaderComponent } from './header/header.component';
 
 const routes: Routes = [
   {path:'app', component: MainComponent},
+  {path:'extra', loadChildren: () => import('./pages/extra-page/extra-page.module').then(m => m.ExtraPageModule)},
   {path:'error', component: ErrorComponent},
+  {path:'', redirectTo: 'app', pathMatch: 'full'},
   {path:'**', redirectTo: 'error'}
 ];
 
