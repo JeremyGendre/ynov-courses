@@ -1,5 +1,9 @@
 <div class="boxes-container">
   <!--<app-box *ngFor="let box of boxes" [id]="box.id" [title]="box.title" [content]="box.content" [color]="box.color" (clickedEvent)="handleClickBox(box.id)"></app-box>-->
+  <input [formControl]="ibanValue">
+  <div>
+    {{ibanValue.value | iban}}
+  </div>
   <hr/>
   <app-box *ngFor="let user of users"
            [id]="user.id"

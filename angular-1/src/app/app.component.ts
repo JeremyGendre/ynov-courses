@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpService} from "./services/http.service";
 import {RickUsersModel} from "./models/RickUsers.model";
+import {FormControl} from "@angular/forms";
 
 @Component({
   selector: 'app-root',
@@ -27,6 +28,7 @@ export class AppComponent implements OnInit {
     },
   ];
   users: Array<RickUsersModel> = [];
+  ibanValue: FormControl = new FormControl();
 
   constructor(public httpService: HttpService){}
 

@@ -5,15 +5,26 @@ import { AppComponent } from './app.component';
 import { BoxComponent } from './box/box.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {ErrorInterceptor} from "./services/interceptors/error.interceptor";
+import {ReactiveFormsModule} from "@angular/forms";
+import { IbanPipe } from './services/pipes/iban.pipe';
+import {RouterModule, Routes} from "@angular/router";
+
+const routes: Routes = [
+  {path:'app', component: AppComponent},
+  {path:'**', redirectTo: 'app'}
+];
 
 @NgModule({
   declarations: [
     AppComponent,
-    BoxComponent
+    BoxComponent,
+    IbanPipe
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [
     {
