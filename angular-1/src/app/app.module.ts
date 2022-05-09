@@ -8,17 +8,22 @@ import {ErrorInterceptor} from "./services/interceptors/error.interceptor";
 import {ReactiveFormsModule} from "@angular/forms";
 import { IbanPipe } from './services/pipes/iban.pipe';
 import {RouterModule, Routes} from "@angular/router";
+import { ErrorComponent } from './errors/error/error.component';
+import { AppComponent as MainComponent } from './pages/app/app.component';
 
 const routes: Routes = [
-  {path:'app', component: AppComponent},
-  {path:'**', redirectTo: 'app'}
+  {path:'app', component: MainComponent},
+  {path:'error', component: ErrorComponent},
+  {path:'**', redirectTo: 'error'}
 ];
 
 @NgModule({
   declarations: [
+    MainComponent,
     AppComponent,
     BoxComponent,
-    IbanPipe
+    IbanPipe,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
