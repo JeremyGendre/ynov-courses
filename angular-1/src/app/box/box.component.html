@@ -1,5 +1,5 @@
 <div class="box" [ngClass]="{'box-clicked':clicked}" (click)="handleClick()">
-  <div class="box-circle" [style.backgroundColor]="color"></div>
+  <img class="box-circle" [src]="background" alt="image !"/>
   <div>
     <div class="box-title">{{ title }}</div>
     <div>{{ content }}</div>

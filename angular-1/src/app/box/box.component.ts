@@ -9,7 +9,7 @@ export class BoxComponent implements OnInit {
   @Input() id: number = 0;
   @Input() title: string = 'Headline';
   @Input() content: string = 'lorem ipsum lorem ipsum';
-  @Input() color: string = "red";
+  @Input() background: string = "red";
   clicked: boolean = false;
 
   @Output() clickedEvent = new EventEmitter<number>();

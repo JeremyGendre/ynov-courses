@@ -1,11 +1,13 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {HttpService} from "./services/http.service";
+import {RickUsersModel} from "./models/RickUsers.model";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'angular-1';
   boxes = [
     {
@@ -24,8 +26,18 @@ export class AppComponent {
       color: '#C2F040',
     },
   ];
+  users: Array<RickUsersModel> = [];
 
-  handleClickBox(boxId: number): void{
-    this.boxes = this.boxes.filter(box => box.id !== boxId);
+  constructor(public httpService: HttpService){}
+
+  ngOnInit(): void {
+    this.httpService.getUsers().subscribe(data => {
+      console.log(data.results);
+      this.users = data.results;
+    });
+  }
+
+  handleClickBox(userId: number): void{
+    this.users = this.users.filter(user => user.id !== userId);
   }
 }
