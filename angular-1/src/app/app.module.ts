@@ -10,6 +10,7 @@ import { IbanPipe } from './services/pipes/iban.pipe';
 import {RouterModule, Routes} from "@angular/router";
 import { ErrorComponent } from './errors/error/error.component';
 import { AppComponent as MainComponent } from './pages/app/app.component';
+import { HeaderComponent } from './header/header.component';
 
 const routes: Routes = [
   {path:'app', component: MainComponent},
@@ -23,7 +24,8 @@ const routes: Routes = [
     AppComponent,
     BoxComponent,
     IbanPipe,
-    ErrorComponent
+    ErrorComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

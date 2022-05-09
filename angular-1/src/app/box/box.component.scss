@@ -5,6 +5,11 @@
   margin: 1em;
   padding:0.6em;
   background-color:white;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+}
+.box:hover{
+  background-color: rgba(0,0,0,0.1);
 }
 
 .box-circle{

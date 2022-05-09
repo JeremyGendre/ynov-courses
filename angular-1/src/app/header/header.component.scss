@@ -1,0 +1,39 @@
+header{
+  position: sticky;
+  top:0;
+  z-index: 10;
+  background-color: #2c7a7b;
+  color: white;
+}
+
+header ul{
+  list-style-type: none;
+  display: flex;
+  margin: 0;
+  padding:0;
+}
+
+header li{
+  padding: 1em;
+}
+
+header a {
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+}
+
+header a:after{
+  content: '';
+  position: absolute;
+  bottom:-2px;
+  left:0;
+  width: 0;
+  height: 2px;
+  background-color: white;
+  transition: all 0.15s ease-in-out;
+}
+
+header a:hover:after{
+  width:100%;
+}
