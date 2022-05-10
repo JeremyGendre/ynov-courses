@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
+import {UsersModel} from "../../models/Users.model";
 
 @Component({
   selector: 'app-user-form',
@@ -8,11 +9,10 @@ import {FormControl, FormGroup} from "@angular/forms";
 })
 export class UserFormComponent implements OnInit {
 
+  @Output() submitEvent = new EventEmitter<UsersModel>();
   frameworks = ['vue','react', 'angular'];
-
   error:string = '';
   submitting:boolean = false;
-
   form = new FormGroup({
     firstname: new FormControl(),
     lastname: new FormControl(),
@@ -34,7 +34,6 @@ export class UserFormComponent implements OnInit {
 
   handleSubmit(e:any){
     e.preventDefault();
-    console.log(this.form.value);
     const errors = this.validateForm();
     if(errors){
       this.error = errors;
@@ -43,9 +42,10 @@ export class UserFormComponent implements OnInit {
     this.error = '';
     this.submitting = true;
     //submit ...
-    /*setTimeout(() => {
+    setTimeout(() => {
+      this.submitEvent.emit(this.form.value);
       this.submitting = false;
-    },2000);*/
+    },2000);
   }
 
 }

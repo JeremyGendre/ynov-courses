@@ -24,4 +24,8 @@ export class UserApiComponent implements OnInit {
     ];
   }
 
+  handleNewUser(newUserForm:UsersModel){
+    console.log(newUserForm);
+  }
+
 }

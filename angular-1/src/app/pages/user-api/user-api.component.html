@@ -1,6 +1,6 @@
 <div class="user-api-container">
   <div class="user-form">
-    <app-user-form></app-user-form>
+    <app-user-form (submitEvent)="handleNewUser($event)"></app-user-form>
   </div>
   <div class="user-list">
     <app-user-list [users]="users"></app-user-list>
