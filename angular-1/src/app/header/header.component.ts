@@ -20,6 +20,11 @@ export class HeaderComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    window.addEventListener('resize', () => {
+      if(window.innerWidth > 650){
+        this.menuOpened = false;
+      }
+    });
   }
 
   handleClick(){
