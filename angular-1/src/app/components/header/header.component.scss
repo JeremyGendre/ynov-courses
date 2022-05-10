@@ -7,6 +7,7 @@ header{
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
 header .title{
   margin:auto 0 auto 0.5em;
