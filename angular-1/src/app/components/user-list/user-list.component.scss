@@ -37,7 +37,11 @@
   padding:1em;
   margin:0.5em;
   display: flex;
+  transition: all 0.15s ease-in-out;
   justify-content: space-between;
+}
+.user-card:hover{
+  box-shadow: 1px 1px 8px rgba(0,0,0,0.3);
 }
 img{
   width:1.5em;

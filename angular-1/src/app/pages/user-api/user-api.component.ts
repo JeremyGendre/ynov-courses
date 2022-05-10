@@ -22,6 +22,7 @@ export class UserApiComponent implements OnInit {
       {id:0, lastname:'Gendre', firstname: 'Jérémy', framework: 'react'},
       {id:0, lastname:'Pelcat', firstname: 'Martin', framework: 'react'},
       {id:0, lastname:'Un', firstname: 'Débile', framework: 'angular'},
+      {id:0, lastname:'Test', firstname: 'Testui', framework: 'vue'},
     ];
   }
 
