@@ -1,8 +1,19 @@
 <header>
-  <nav>
+  <div class="title">
+    <span class="openMenuBtn" (click)="handleClick()">
+      {{ menuOpened ? 'X' : 'M' }}
+    </span>
+    <span>Hello</span>
+  </div>
+  <nav [ngClass]="menuOpened ? 'nav-opened' : ''">
     <ul>
-      <li><a routerLink="/app">app</a></li>
-      <li><a routerLink="/extra">extra</a></li>
+      <li *ngFor="let route of routes">
+        <a
+          routerLinkActive="underlined"
+          [routerLink]="route.link"
+        >{{route.title}}</a>
+      </li>
     </ul>
   </nav>
+  <div [ngClass]="menuOpened ? 'shadow-opened' : ''" class="responsive-mobile-shadow" (click)="handleClick()"></div>
 </header>
