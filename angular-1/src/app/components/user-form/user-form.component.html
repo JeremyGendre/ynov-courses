@@ -1,0 +1,31 @@
+<form [formGroup]="form" (submit)="handleSubmit($event)">
+  <h2 class="color-main">
+    Ajouter un utilisateur
+  </h2>
+  <div class="form-row names-group">
+    <input
+      type="text"
+      formControlName="lastname"
+      required
+      placeholder="Lastname"
+    />
+    <input
+      type="text"
+      formControlName="firstname"
+      required
+      placeholder="Firstname"
+    />
+  </div>
+  <div class="form-row">
+    <select formControlName="framework" required>
+      <option *ngFor="let framework of frameworks" [value]="framework">{{framework | titlecase}}</option>
+    </select>
+  </div>
+  <div *ngIf="error" class="form-row form-error">{{error}}</div>
+  <div class="form-row">
+    <button type="submit" [disabled]="submitting">
+      <span class="btn-text">{{!submitting ? 'Ajouter' : 'Traitement...'}}</span>
+      <span *ngIf="submitting" class="loader"></span>
+    </button>
+  </div>
+</form>

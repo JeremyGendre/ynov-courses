@@ -1,0 +1,9 @@
+.user-api-container{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.user-form, .user-list{
+  margin: 0.5em;
+  flex:1;
+}

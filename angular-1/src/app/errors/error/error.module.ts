@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from "@angular/router";
-import {ExtraPageComponent} from "./extra-page.component";
+import {ErrorComponent} from "./error.component";
 
 const routes: Routes = [
-  {path:'', component: ExtraPageComponent},
+  {path:'', component: ErrorComponent},
 ];
 
 @NgModule({
@@ -14,4 +14,4 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ]
 })
-export class ExtraPageModule { }
+export class ErrorModule { }

@@ -1,4 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+:root{
+  --main : #2c7a7b;
+}
 html,
 body {
   padding: 0;
@@ -7,8 +10,32 @@ body {
   Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+.color-main{
+  color:var(--main);
+}
+
 .full-page{
   width: 100vw;
   height: 100vh;
   display:flex;
+}
+
+.loader{
+  width: 1em;
+  height: 1em;
+  border: solid 2px whitesmoke;
+  border-top: solid 2px var(--main);
+  animation: spin 1s infinite linear;
+  display: block;
+  border-radius: 999px;
+  margin: auto;
+}
+
+@keyframes spin {
+  from {
+    transform:rotate(0deg);
+  }
+  to {
+    transform:rotate(360deg);
+  }
 }

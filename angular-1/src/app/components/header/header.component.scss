@@ -2,7 +2,7 @@ header{
   position: sticky;
   top:0;
   z-index: 10;
-  background-color: #2c7a7b;
+  background-color: var(--main);
   color: white;
   display: flex;
   justify-content: space-between;
@@ -76,7 +76,7 @@ header a:hover:after, .underlined:after{
     top:0;
     left:0;
     background-color: white;
-    color:#2c7a7b;
+    color:var(--main);
     height:100vh;
     box-shadow: 0 0 10px rgba(0,0,0,0.3);
     transform:translateX(-100%);
@@ -84,7 +84,7 @@ header a:hover:after, .underlined:after{
     min-width: 200px;
   }
   header a:hover:after, .underlined:after{
-    background-color: #2c7a7b !important;
+    background-color: var(--main) !important;
   }
   nav ul{
     display: block;
@@ -101,7 +101,7 @@ header a:hover:after, .underlined:after{
     display: block;
   }
   .nav-opened .underlined{
-    background-color: #2c7a7b;
+    background-color: var(--main);
     color:white;
   }
 }

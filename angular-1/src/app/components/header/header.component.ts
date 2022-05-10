@@ -9,8 +9,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   routes = [
     {link: '/app', title: 'Home'},
-    {link: '/extra', title: 'Extra'},
-    {link: '/shop', title: 'Shop'},
+    {link: '/user-api', title: 'User API'},
+    {link: '/components', title: 'Components'},
     {link: '/settings', title: 'Settings'},
     {link: '/contact', title: 'Contact us'},
   ];

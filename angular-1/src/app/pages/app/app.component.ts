@@ -33,7 +33,7 @@ export class AppComponent implements OnInit {
   constructor(public httpService: HttpService){}
 
   ngOnInit(): void {
-    this.httpService.getUsers().subscribe(data => {
+    this.httpService.getRickUsers().subscribe(data => {
       console.log(data.results);
       this.users = data.results;
     });
