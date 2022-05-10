@@ -1,0 +1,46 @@
+.btns-filter{
+  display: flex;
+  padding:0.5em;
+  gap: 1em;
+}
+.fw-filter{
+  padding:0.5em 1em;
+  background-color: transparent;
+  color:var(--main);
+  border:solid 1px var(--main);
+  border-radius: 999px;
+  transition: all 0.15s ease-in-out;
+  cursor:pointer;
+}
+.fw-filter:hover, .fw-selected{
+  background-color: var(--main);
+  color:white;
+}
+.fw-filter:active{
+  transform: scale(0.95);
+}
+
+.users-count{
+  margin: auto 0;
+}
+
+
+.user-list{
+  display: flex;
+  flex-wrap: wrap;
+}
+.user-card{
+  border-radius: 5px;
+  box-shadow: 1px 1px 8px rgba(0,0,0,0.2);
+  max-width: 20em;
+  min-width: 15em;
+  padding:1em;
+  margin:0.5em;
+  display: flex;
+  justify-content: space-between;
+}
+img{
+  width:1.5em;
+  aspect-ratio: 1 / 1;
+  margin :auto 0;
+}

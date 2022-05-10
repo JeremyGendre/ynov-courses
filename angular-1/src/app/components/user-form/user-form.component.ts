@@ -1,6 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {UsersModel} from "../../models/Users.model";
+import {frameworks} from "../../models/Frameworks";
 
 @Component({
   selector: 'app-user-form',
@@ -10,7 +11,7 @@ import {UsersModel} from "../../models/Users.model";
 export class UserFormComponent implements OnInit {
 
   @Output() submitEvent = new EventEmitter<UsersModel>();
-  frameworks = ['vue','react', 'angular'];
+  frameworks = frameworks;
   error:string = '';
   submitting:boolean = false;
   form = new FormGroup({

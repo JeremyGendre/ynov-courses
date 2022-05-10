@@ -1,5 +1,10 @@
-<div>
-  <div *ngFor="let user of users">
-    {{user.lastname}} {{user.firstname}} : {{user.framework}}
+<div class="btns-filter">
+  <div *ngFor="let framework of frameworks" [ngClass]="{'fw-selected' : filterFramework === framework}" class="fw-filter" (click)="handleFilterChange(framework)">{{framework | titlecase}}</div>
+  <div class="users-count">{{users.length}} utilisateurs au total</div>
+</div>
+<div class="user-list">
+  <div class="user-card" *ngFor="let user of displayedUsers">
+    <div>{{user.lastname}} {{user.firstname}}</div>
+    <img [src]="'/assets/images/'+user.framework.toLowerCase()+'.png'" />
   </div>
 </div>
