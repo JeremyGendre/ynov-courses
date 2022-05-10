@@ -14,6 +14,7 @@ export class UserApiComponent implements OnInit {
   constructor(public httpService: HttpService) { }
 
   ngOnInit(): void {
+    //TODO : replace with real API
     /*this.httpService.getUsers().subscribe(data => {
       console.log(data);
     });*/
@@ -25,7 +26,7 @@ export class UserApiComponent implements OnInit {
   }
 
   handleNewUser(newUserForm:UsersModel){
-    console.log(newUserForm);
+    this.users = [...this.users, newUserForm];
   }
 
 }

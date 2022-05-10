@@ -32,6 +32,10 @@ export class UserFormComponent implements OnInit {
     return null;
   }
 
+  resetData():void{
+    this.form.reset();
+  }
+
   handleSubmit(e:any){
     e.preventDefault();
     const errors = this.validateForm();
@@ -45,6 +49,7 @@ export class UserFormComponent implements OnInit {
     setTimeout(() => {
       this.submitEvent.emit(this.form.value);
       this.submitting = false;
+      this.resetData();
     },2000);
   }
 
